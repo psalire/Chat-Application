@@ -1,8 +1,4 @@
-Philip Salire
-psalire@ucsc.edu
-CMPE 156/L Winter 2019
-
-Final Assignment: Chat
+Chat
 
 Files:
 /
@@ -12,13 +8,10 @@ Files:
     /include          : All .h files
     server.cc         : Main server file
     client.cc         : Main client file
-    class_client      : Source for Client class
-    class_server      : Source for Server class
-    class_user        : Source for User class
-    communication     : Source for communication functions
-  /doc                : All documentation files
-    README            : Overview of submission
-    Documentation.pdf : Explanation of program
+    class_client.cc   : Source for Client class
+    class_server.cc   : Source for Server class
+    class_user.cc     : Source for User class
+    communication.cc  : Source for communication functions
 
 Limitations:
   - Very long messages will be cut.

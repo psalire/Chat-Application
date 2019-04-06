@@ -1,14 +1,8 @@
-Philip Salire
-
-psalire@ucsc.edu
-
-CMPE 156/L Winter 2019
-
-# Final Assignment: Chat
+# Chat
 
 ## Files
 
-See README
+See readme.txt
 
 ## Overview
 
