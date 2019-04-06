@@ -1,5 +1,7 @@
 # Chat
 
+COMPILER USED: ```gcc version 8.2.1 20180905 (Red Hat 8.2.1-3) (GCC)```
+
 ## Files
 
 See readme.txt

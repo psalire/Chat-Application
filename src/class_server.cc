@@ -25,19 +25,23 @@ Server::Server(TCPSocket tcpsocket) {
 }
 
 int Server::addUser(const char user_name[128], std::string ip_addr, int port) {
+    mutex->lock();
     if (active_users.find(std::string(user_name)) != active_users.end()) {
         return -1;
     }
     active_users.insert(std::pair<std::string,std::pair<std::string,int>>(user_name, std::make_pair(ip_addr, port)));
+    mutex->unlock();
     verbose("Added user: " + std::string(user_name) + "," + std::to_string(port) + "," + ip_addr);
     return 1;
 }
 void Server::removeUser(const char user_name[128]) {
+    mutex->lock();
     std::map<std::string,std::pair<std::string,int>>::iterator it;
     if ((it = active_users.find(std::string(user_name))) != active_users.end()) {
         active_users.erase(it);
         verbose("Removed user: " + std::string(user_name));
     }
+    mutex->unlock();
 }
 
 Message Server::buildMessage(MessageType type, std::string content) {
@@ -67,6 +71,7 @@ void Server::sendUserInfo(TCPSocket sock, const char user_name[128]) {
     std::string ipaddr;
     int port = -1;
     std::pair<std::string,int> elem;
+    mutex->lock();
     try {
         elem = active_users.at(std::string(user_name));
         ipaddr = elem.first;
@@ -75,6 +80,7 @@ void Server::sendUserInfo(TCPSocket sock, const char user_name[128]) {
     catch (const std::out_of_range &e) {
         verbose("Error: failed to find " + std::string(user_name));
     }
+    mutex->unlock();
     msg = buildMessage(USER_INFO, ipaddr + "," + std::to_string(port));
     sendMessage(sock, &msg);
 }
@@ -82,10 +88,12 @@ void Server::sendUserInfo(TCPSocket sock, const char user_name[128]) {
 std::string Server::getUserList() {
     std::string response;
     uint16_t i = 1;
+    mutex->lock();
     for (auto user : active_users) {
         response += std::to_string(i++) + ") ";
         response += user.first + "\n";
     }
+    mutex->unlock();
     return response;
 }
 
