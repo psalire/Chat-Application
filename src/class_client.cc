@@ -1,17 +1,3 @@
-/*
-    Philip Salire
-    psalire@ucsc.edu 1477868
-    CMPE 156/L: Final Project: Chat
-*/
-
-/* TODO: Create function for receiving connection upon WAIT,
-         saves chatbuddy_socket & username,
-         this goes on its own thread,
-         Move command handling to its own function,
-         CHAT handling has its own loop, run getUserInput(),
-         checks for commands, then sends its message if not a command to connection
-*/
-
 #include "client.h"
 #define BREAK -1
 #define CONTINUE 0

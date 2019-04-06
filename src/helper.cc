@@ -1,9 +1,3 @@
-/*
-    Philip Salire
-    psalire@ucsc.edu 1477868
-    CMPE 156/L: Final Project: Chat
-*/
-
 #include "helper.h"
 
 uint8_t option_verbose = 0x0;

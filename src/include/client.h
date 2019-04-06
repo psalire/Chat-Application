@@ -1,9 +1,3 @@
-/*
-    Philip Salire
-    psalire@ucsc.edu 1477868
-    CMPE 156/L: Final Project: Chat
-*/
-
 #ifndef _CLIENT_H_
 #define _CLIENT_H_
 
